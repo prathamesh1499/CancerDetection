@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>Cancer Detection</title>
+
+    <style>
+    
+        body {
+            background-image: "C:\Users\prathu\Desktop\ML-with deployment\image\back.png";
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+    
+    .button_css {
+    color: #494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    }
+    
+    .button_css:hover {
+    color: #ffffff !important;
+    background: #f6b93b;
+    border-color: #f6b93b !important;
+    transition: all 0.4s ease 0s;
+    }
+
+    .text_color{
+        color:crimson
+    }
+    </style>
+
+    </head>
+    <body background="C:\Users\prathu\Desktop\ML-with deployment\image\back.png">
+
+        
+        <!--<div>
+          <img src="C:\Users\prathu\Desktop\wallpapers  &backup\wallpapers\windows.jpg" class="w3-border w3-padding" style="width:100%">
+        </div> -->
+       
+       
+       <div class="login">
+          
+          <!-- Get input for predict the cancer -->
+          <center>
+          <form action="{{ url_for('predict')}}"method="post">
+              <h1 class="text_color">Enter the value of tumor features</h1>
+              <h1 align="center">
+              <input type="text" name="mean_radius" placeholder="Enter mean radius (10 to 20)" required="required" size="27px"/>
+              </h1>
+              <h1>
+                <input type="text" name="mean_texture" placeholder="Enter mean texture (10 to 40) " required="required" size="27px"/>
+                <input type="text" name="mean_perimeter" placeholder="Enter mean perimeter(60 to 160)" required="required" size="27px"/>
+                <input type="text" name="mean_area" placeholder="Enter mean area (145 to 1500)" required="required" size="27px"/>
+                <input type="text" name="mean_smoothness" placeholder="Enter mean smoothness (0.05 to 0.18)" required="required" size="30px"/>
+                <input type="text" name="mean_compactness" placeholder="Enter mean compactness (0.01 to 0.3)" required="required" size="30px"/>
+                <input type="text" name="mean_concavity" placeholder="Enter mean concavity (0 to 0.4)" required="required" size="27px"/>
+                <input type="text" name="mean_concave_points" placeholder="Enter mean concave points(0 to 0.2)" required="required" size="30px" />
+                <input type="text" name="mean_symmetry" placeholder="Enter mean symmetry (0.1 to 0.3)" required="required" size="27px"/>
+            </h1>
+              <input type="text" name="mean_fractal_dimension" placeholder="Enter fractal dimension (0.04 to 0.09)" required="required" size="30px"/>
+              <input type="text" name="radius_error" placeholder="Enter radius error (0.1 to 2.9)" required="required" size="27px"/>
+              <input type="text" name="texture_error" placeholder="Enter texture error (0.36 to 4)" required="required" size="27px" />
+              <input type="text" name="perimeter_error" placeholder="Enter perimeter error (0.7 to 5)" required="required" size="27px" />
+              <br>
+            <h1>
+              <input type="text" name="area_error" placeholder="Enter area error (10.0 to 50.0)" required="required" size="27px" />
+              <input type="text" name="smoothness_error" placeholder="Enter smoothness error (0.001 to 0.03)" required="required" size="30px"/>
+              <input type="text" name="compactness_error" placeholder="Enter compactness error (0.004 to 0.1)" required="required" size="30px"/>
+              <input type="text" name="concavity_error" placeholder="Enter concavity error (0 to 0.3)" required="required" size="27px"/>
+              <input type="text" name="concave_points_error" placeholder="Enter concave points error (0 to 0.05)" required="required" size="30px"/>
+            </h1> 
+              <input type="text" name="symmetry_error" placeholder="Enter symmetry error(0.002 to 0.008)" required="required" size="27px"/>
+              <input type="text" name="fractal_dimension_error" placeholder="Enter fractal dimension error (0.009 to 0.02)" required="required" size="27px"/>
+              <input type="text" name="worst_radius" placeholder="Enter worst radius (8 to 36)" required="required" size="27px"/>
+              <input type="text" name="worst_texture" placeholder="Enter worst texture (12.2 to 49.5)" required="required" size="27px"/>
+              <input type="text" name="worst_perimeter" placeholder="Enter worst perimeter (50.5 to 220)" required="required" size="27px"/>
+              <br>
+              <h1>
+              <input type="text" name="worst_area" placeholder="Enter worst area (190 to 2000)" required="required" size="27px"/>
+              <input type="text" name="worst_smoothness" placeholder="Enter worst smoothness (0.07 to 0.2)" required="required" size="27px"/>
+              <input type="text" name="worst_compactness" placeholder="Enter worst compactness (0.03 to 1)" required="required" size="27px"/>
+              <input type="text" name="worst_concavity" placeholder="Enter worst concavity (0 to 1.2)" required="required" size="27px"/>
+              <input type="text" name="worst_concave_points" placeholder="Enter worst concave points (0 to 0.3)" required="required" size="27px"/>
+              <input type="text" name="worst_symmetry" placeholder="Enter worst symmetry (0.16 to 0.5)" required="required" size="27px"/>
+              <input type="text" name="worst_fractal_dimension" placeholder="Enter worst fractal dimension (0.06 to 0.2)" required="required" size="30 vvvvvpx"/>
+              </h1>
+              <br>
+              <!-- Show button -->
+              <div class="button_cont" align="center"><a class="button_css" href="http://bit.ly/breast-cancer-ml-project" target="_blank" rel="nofollow noopener">
+                  <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict Cancer</strong></button></a>
+              </div>
+              
+          </form>
+          </center>
+         
+         <!--  output using ML model --> 
+         <div>
+             <center>
+         <h1 class="text_color">{{ prediction_text }}</h1>
+             </center>
+         </div>
+      
+       </div>
+      
+      </body>
+</html>
